@@ -1,12 +1,12 @@
 <div class="container">
-  <h1>My Goals</h1>
+  <h1>MY GOALS</h1>
   <hr>
 
   <div class="row">
     <div class="col-md-6">
       <div *ngFor='let goal of goals;let i = index'>
         <div>
-          <h4 id={{i}} appStrikethrough>{{goal.name}} due on {{goal.completeDate|date|uppercase}}</h4>
+          <h6 id={{i}} appStrikethrough>{{goal.name}} due on {{goal.completeDate|date|uppercase}}</h6>
           <button (click)='toggleDetails(i)' class="btn btn-primary">Toggle Details</button>
         </div>
 
@@ -15,7 +15,9 @@
         </div>
       </div>
     </div>
+    <div class="col-md-6" style="margin-top:20px">
+            <app-goal-form (addGoal)="addNewGoal($event)"></app-goal-form>
+    </div>
   </div>
-
   <p *ngIf='goals.length > 5'>You have too many goals</p>
 </div>
